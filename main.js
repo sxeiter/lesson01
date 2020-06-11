@@ -11,9 +11,7 @@ let mission = 1400000;
 let period = 12;
 
 let start = function() {
-    money = prompt('Ваш месячный доход?');
-
-    /* while (!isNumber(money)) {
+        /* while (!isNumber(money)) {
         money = prompt('Ваш ежемесячный доход?');
     } */
     do{
