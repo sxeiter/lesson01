@@ -1,9 +1,23 @@
 'use strict';
+let money; 
+
 let isNumber = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
-let money; 
+let start = function() {
+    /* while (!isNumber(money)) {
+    money = prompt('Ваш ежемесячный доход?');
+} */
+do{
+    money = +prompt('Ваш ежемесячный доход?');
+}
+while(!isNumber(money));
+};
+
+start();
+
+
 let income = 'Фриланс'; 
 let addExpenses = prompt('Перечислите возможные расходы за расчитываемый период через запятую', 'еда, вода, жизнь'); 
 let deposit = confirm('Есть ли у вас депозит в банке?', true); 
@@ -16,18 +30,6 @@ let showTypeOf = function(data) {
 showTypeOf(money);
 showTypeOf(income);
 showTypeOf(deposit);
-
-let start = function() {
-        /* while (!isNumber(money)) {
-        money = prompt('Ваш ежемесячный доход?');
-    } */
-    do{
-        money = +prompt('Ваш ежемесячный доход?');
-    }
-    while(!isNumber(money));
-};
-
-start();
 
 let expenses = [];
 
