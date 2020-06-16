@@ -40,19 +40,17 @@ let appData = {
             appData.expenses[i] = prompt('Введите обязательную статью расходов');
           
             expensesMonth += +prompt('Во сколько это обойдется?');
+            appData.expensesMonth = expensesMonth;
         }
-        console.log(expensesMonth);
         return expensesMonth; 
     },
     getExpensesMonth : function (){
-        //appData.expensesMonth = 
-
-
-        let sum = 0;
+        /* let sum = 0;
         for (let key in appData.expensesMonth) {
-            sum += appData.expensesMonth;
+            sum += appData.expensesMonth[key];
             }
-        return appData.expensesMonth;
+            console.log(sum);
+        return sum; */
     },
     getBudget: function(){
         appData.budgetMonth = appData.budget - appData.expensesMonth;
@@ -67,8 +65,7 @@ let appData = {
         }else {
             console.log('Цель будет достигнута за: ' + Math.ceil(appData.mission / appData.budgetMonth) + ' месяцев');
         }
-        
-        
+                
     },
     getStatusIncome: function(){
         if (appData.budgetDay >= 1200) {
@@ -90,9 +87,16 @@ appData.getBudget();
 appData.getTargetMonth();
 appData.getStatusIncome();
 
-console.log('Расходы за месяц:  ' + (appData.budget - appData.expensesMonth));
+let infoAppData = function(){
+    for(let key in appData){
+        console.log('Наша программа включает в себя данные: ', key, appData[key]);
+    }
+};
+
+console.log('Расходы за месяц:  ' + (appData.expensesMonth));
 console.log(appData.getStatusIncome());
 
+infoAppData();
 
 
 
