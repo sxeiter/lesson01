@@ -30,38 +30,44 @@ let appData = {
         let addExpenses;
         do{
             addExpenses = prompt('Перечислите возможные расходы за расчитываемый период через запятую', 'еда, вода, жизнь');
-        } while (addExpenses);
+        } while (addExpenses === null);
             appData.addExpenses = addExpenses.toLowerCase().split(', '); 
             appData.deposit = confirm('Есть ли у вас депозит в банке?', true);
         
-        let sum;
+        let expensesMonth = 0;
         for (let i = 0; i < 2; i++) {
             
             appData.expenses[i] = prompt('Введите обязательную статью расходов');
           
-            sum += +prompt('Во сколько это обойдется?');
+            expensesMonth += +prompt('Во сколько это обойдется?');
         }
-        console.log(expenses);
-        return sum; 
-},
-    getExpensesMonth: function(){
+        console.log(expensesMonth);
+        return expensesMonth; 
+    },
+    getExpensesMonth : function (){
+        //appData.expensesMonth = 
+
+
         let sum = 0;
-        for (let key in appData.expenses){
-            sum += appData.expenses[key];
-        }
-        return sum;
+        for (let key in appData.expensesMonth) {
+            sum += appData.expensesMonth;
+            }
+        return appData.expensesMonth;
     },
     getBudget: function(){
-        appData.budgetMonth =  money - expensesAmount;
-        appData.budgetDay = budgetMonth / 30;
+        appData.budgetMonth = appData.budget - appData.expensesMonth;
+        appData.budgetDay = appData.budgetMonth / 30;
+        console.log(appData.budgetMonth);
+        console.log(appData.budgetDay);
     },
     getTargetMonth: function(){
-        if (appData.getTargetMonth() < 0) {
+        let missionMoney = Math.ceil(appData.mission / appData.budgetMonth);
+        if (missionMoney < 0) {
             console.log('Цель не будет достигнута');
         }else {
-            console.log('Цель будет достигнута за: ' + Math.ceil(appData.getTargetMonth()) + ' месяцев');
+            console.log('Цель будет достигнута за: ' + Math.ceil(appData.mission / appData.budgetMonth) + ' месяцев');
         }
-        return appData.mission / appData.getBudget();
+        
         
     },
     getStatusIncome: function(){
@@ -84,8 +90,7 @@ appData.getBudget();
 appData.getTargetMonth();
 appData.getStatusIncome();
 
-console.log('Расходы за месяц:  ' + appData.expensesMonth);
-console.log('Период равен ' + appData.period + ' месяцев');
+console.log('Расходы за месяц:  ' + (appData.budget - appData.expensesMonth));
 console.log(appData.getStatusIncome());
 
 
