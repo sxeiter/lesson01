@@ -114,7 +114,7 @@ appData.getInfoDeposit();
 appData.getExpensesMonth();
 appData.getBudget();
 
-console.log(appData.addExpenses);
+
 console.log('Расходы за месяц:  ' + (appData.expensesMonth));
 
 if (appData.getTargetMonth() < 0) {
@@ -133,4 +133,8 @@ let infoAppData = function(){
 
 infoAppData();
 
-console.log(appData.addExpenses.substring(0, 1).toUppetCase().split(', '));
+let arr = appData.addExpenses; 
+for (let key of arr) {
+    key = key.charAt(0).toUpperCase() + key.substr(1);
+    console.log(key);
+}
