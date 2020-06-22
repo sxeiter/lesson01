@@ -48,7 +48,7 @@ let appData = {
         appData.budget = +salaryAmount.value;
         
 
-        appData.startChange();
+        //appData.startChange();
         appData.getExpenses();
         appData.getIncome();
         appData.getExpensesMonth();
@@ -163,13 +163,13 @@ let appData = {
     calcPeriod: function(){
         return appData.budgetMonth * periodSelect.value;
     },
-    startChange: function(){
+    /* startChange: function(){
         if (salaryAmount.value === '') {
             start.disabled = true;
         } else {
             start.disabled = false;
         }
-    }   
+    }    */
 };
 
 
