@@ -6,14 +6,14 @@ let start = document.getElementById('start'),
     expensesPlus = btnPlus[1],
     additionalIncomeItem = document.querySelectorAll('.additional_income-item'),
     depositCheck = document.querySelector('#deposit-check'),
-    budgetDayValue = document.getElementsByClassName('.budget_day-value')[0],
-    budgetMonthValue = document.getElementsByClassName('.budget_month-value')[0],
-    expensesMonthValue = document.querySelector('.expenses_month-value')[0],
+    budgetDayValue = document.getElementsByClassName('budget_day-value')[0],
+    budgetMonthValue = document.getElementsByClassName('budget_month-value')[0],
+    expensesMonthValue = document.getElementsByClassName('expenses_month-value')[0],
     accumulatedMonthValue = document.getElementsByClassName('accumulated_month-value')[0],
-    additionalIncomeValue = document.querySelector('.additional_income-value')[0],
-    additionalExpensesValue = document.querySelector('.additional_expenses-value')[0],
-    incomePeriodValue = document.querySelector('.income_period-value')[0],
-    targetMonthValue = document.querySelector('.target_month-value')[0],
+    additionalIncomeValue = document.getElementsByClassName('additional_income-value')[0],
+    additionalExpensesValue = document.getElementsByClassName('additional_expenses-value')[0],
+    incomePeriodValue = document.getElementsByClassName('income_period-value')[0],
+    targetMonthValue = document.getElementsByClassName('target_month-value')[0],
     salaryAmount = document.querySelector('.salary-amount'),
     incomeTitle = document.querySelector('.income-title'),
     expensesTitle = document.querySelector('.expenses-title'),
@@ -44,15 +44,11 @@ let appData = {
     moneyDeposit: 0,
     
     start: function() {
-        if(salaryAmount.value === ''){
-            alert('Ошибка, поле "Месячный доход" должно быть заполнено!');
-            return;
-        }
         
-
         appData.budget = +salaryAmount.value;
         
-        
+
+        appData.startChange();
         appData.getExpenses();
         appData.getIncome();
         appData.getExpensesMonth();
@@ -166,8 +162,18 @@ let appData = {
     },
     calcPeriod: function(){
         return appData.budgetMonth * periodSelect.value;
+    },
+    startChange: function(){
+        if (salaryAmount.value === '') {
+            start.disabled = true;
+        } else {
+            start.disabled = false;
+        }
     }   
 };
+
+
+
 
 periodSelect.addEventListener("input", function(event){
     periodAmount.textContent = periodSelect.value;
