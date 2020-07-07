@@ -104,7 +104,7 @@ class AppData {
       incomePlus.style.display = "none";
     }
   }
-  addExpensesBlock() { //
+  addExpensesBlock() { 
     let cloneExpensesItem = expensesItems[0].cloneNode(true);
     let cloneExpensesItem2 = cloneExpensesItem.children;
     for (let i = 0; i < cloneExpensesItem2.length; i++) {
@@ -248,7 +248,7 @@ class AppData {
 
     const deleteText = document.querySelectorAll("[type=text]"),
       range = document.querySelectorAll('[type="range"]');
-    deleteText.forEach((items) => {
+      deleteText.forEach((items) => {
       incomePeriodValue.value = "1";
       periodAmount.textContent = "1";
       periodSelect.value = "1";
@@ -301,7 +301,6 @@ class AppData {
     cancel.addEventListener('click', this.reset.bind(this));
     periodSelect.addEventListener("input", function (event) {
       periodAmount.textContent = periodSelect.value;
-
     });
     depositCheck.addEventListener("change", this.depositHandler.bind(this));
 
