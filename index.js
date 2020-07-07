@@ -62,7 +62,7 @@ start() {
   });
 }
 
-monthAmountValue() {
+monthAmmountValue() {
   if (salaryAmount.value === "" || salaryAmount.value === null) {
     start.disabled = true;
     return;
@@ -89,6 +89,7 @@ addIncomeBlock() {
   }
   incomeItems[0].parentNode.insertBefore(cloneExpensesItem, incomePlus);
   incomeItems = document.querySelectorAll(".income-items");
+  
   if (incomeItems.length === 3) {
     incomePlus.style.display = "none";
   }
@@ -113,6 +114,7 @@ getExpenses() {
   expensesItems.forEach(function (items) {
     const itemExpenses = items.querySelector('.expenses-title').value;
     const cashExpenses = items.querySelector('.expenses-amount').value;
+    
     if (itemExpenses !== "" && cashExpenses !== "") {
       _this.expenses[itemExpenses] = +cashExpenses;
     }
@@ -207,6 +209,7 @@ reset() {
   this.expenses = {};
   this.addExpenses = [];
   this.deposit = false;
+
   const deleteText = document.querySelectorAll("[type=text]");
   deleteText.forEach(function (items) {
     periodAmount.textContent = "1";
@@ -248,6 +251,7 @@ eventListeners() {
   periodSelect.addEventListener('input', this.changeRange);
   salaryAmount.addEventListener('input', this.monthAmmountValue);
   cancel.addEventListener('click', this.reset);
+  
   periodSelect.addEventListener("input", function (event) {
     periodAmount.textContent = periodSelect.value;
   });
